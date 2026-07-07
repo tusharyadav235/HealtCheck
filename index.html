@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearHealth Clinic - Premium Healthcare</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Global Waves Background -->
+    <div class="global-waves-wrapper">
+        <canvas id="global-waves" class="waves-canvas"></canvas>
+    </div>
+
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-bar"></div>
+
+    <!-- Loading Screen (ECG Heartbeat) -->
+    <div class="loading-screen">
+        <svg class="heartbeat" viewBox="0 0 500 100">
+            <polyline points="0,50 150,50 180,20 220,80 250,10 280,90 320,30 350,50 500,50" />
+        </svg>
+    </div>
+
+    <!-- Floating UI -->
+    <a href="#" class="whatsapp-float interactive" aria-label="WhatsApp">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    </a>
+    <button class="back-to-top interactive" aria-label="Back to Top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-container">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+                <span>ClearHealth</span>
+            </div>
+            <div class="nav-links">
+                <a href="#hero" class="interactive">Home</a>
+                <a href="#services" class="interactive">Services</a>
+                <a href="#booking" class="interactive">Book</a>
+                <a href="#packages" class="interactive">Packages</a>
+                <a href="#gallery" class="interactive">Gallery</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle interactive" aria-label="Toggle Dark Mode">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
+                <a href="#booking" class="btn btn-primary interactive">Book Appointment</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero-bg-wrapper">
+            <div class="hero-bg-image"></div>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="eyebrow fade-up">Premium Care</div>
+                <h1 class="hero-title fade-up stagger-1">Your Health, <br>Our <span class="italic-highlight">Priority.</span></h1>
+                <p class="hero-subtext fade-up stagger-2">Advanced Diagnostics, Expert Care, and Trusted Healthcare Services for Your Family.</p>
+                <div class="hero-actions fade-up stagger-3">
+                    <a href="#booking" class="btn btn-primary interactive">Book Appointment</a>
+                    <a href="#services" class="btn btn-outline interactive">View Services</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-card glass interactive float-anim-1">
+                    <span class="stat-num" data-target="50000">0</span>+
+                    <span class="stat-label">Patients Served</span>
+                </div>
+                <div class="stat-card glass interactive float-anim-2">
+                    <span class="stat-num" data-target="25">0</span>+
+                    <span class="stat-label">Expert Doctors</span>
+                </div>
+                <div class="stat-card glass interactive float-anim-3">
+                    <span class="stat-num" data-target="15">0</span>+
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-card glass interactive float-anim-4">
+                    <span class="stat-num" data-target="24">0</span>/7
+                    <span class="stat-label">Emergency Support</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Smart Booking Form Section -->
+    <section class="section booking-section" id="booking">
+        <div class="container">
+            <div class="booking-split-panel">
+                <div class="booking-info">
+                    <h2>Smart Appointment Booking</h2>
+                    <p>Schedule your visit in seconds with our concierge system.</p>
+                    <ul class="booking-benefits">
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> No waiting in line</li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Instant email confirmation</li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Free cancellation up to 24hrs</li>
+                    </ul>
+                </div>
+                <div class="booking-form-wrapper">
+                    <form class="booking-form" id="bookingForm">
+                        <div class="form-grid">
+                            <div class="input-float">
+                                <select required>
+                                    <option value="" disabled selected></option>
+                                    <option>Cardiology</option>
+                                    <option>Pediatrics</option>
+                                    <option>Diagnostics</option>
+                                </select>
+                                <label>Department</label>
+                            </div>
+                            <div class="input-float">
+                                <select required>
+                                    <option value="" disabled selected></option>
+                                    <option>Dr. Sarah Jenkins</option>
+                                    <option>Dr. Michael Chen</option>
+                                </select>
+                                <label>Doctor</label>
+                            </div>
+                            <div class="input-float">
+                                <input type="date" required>
+                                <label>Date</label>
+                            </div>
+                            <div class="input-float">
+                                <select required>
+                                    <option value="" disabled selected></option>
+                                    <option>Morning (9AM - 12PM)</option>
+                                    <option>Afternoon (1PM - 4PM)</option>
+                                </select>
+                                <label>Time Slot</label>
+                            </div>
+                            <div class="input-float full-width">
+                                <input type="text" placeholder=" " required>
+                                <label>Patient Full Name</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary interactive full-width mt-4">Confirm Appointment</button>
+                    </form>
+                    <div class="booking-success hidden">
+                        <div class="success-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <h3>Booking Confirmed!</h3>
+                        <p>We have sent the details to your email.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Bento Grid -->
+    <section class="section services-section" id="services">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <span class="eyebrow">Expertise</span>
+                <h2 class="section-title">Our Services</h2>
+            </div>
+            <div class="bento-grid">
+                <div class="bento-item bento-large interactive fade-up stagger-1">
+                    <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+                    <h3>Diagnostics & Lab Testing</h3>
+                    <p>State-of-the-art laboratory for rapid, accurate results.</p>
+                    <a href="#" class="service-link">Learn More &rarr;</a>
+                </div>
+                <div class="bento-item interactive fade-up stagger-2">
+                    <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg></div>
+                    <h3>General Consultation</h3>
+                </div>
+                <div class="bento-item interactive fade-up stagger-3">
+                    <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg></div>
+                    <h3>Cardiology</h3>
+                </div>
+                <div class="bento-item bento-tall interactive fade-up stagger-4">
+                    <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
+                    <h3>Pediatrics</h3>
+                    <p>Compassionate care for your little ones.</p>
+                </div>
+                <div class="bento-item interactive fade-up stagger-1">
+                    <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></div>
+                    <h3>Orthopedics</h3>
+                </div>
+                <div class="bento-item bento-wide interactive fade-up stagger-2">
+                    <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle></svg></div>
+                    <h3>Radiology & Imaging</h3>
+                    <p>Advanced MRI, CT, and X-Ray facilities on-site.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section why-choose-us">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <h2 class="section-title">Why Choose Us</h2>
+            </div>
+            <div class="reveal-grid">
+                <div class="reveal-card interactive fade-up stagger-1">
+                    <div class="reveal-num">01</div>
+                    <div class="reveal-content">
+                        <h4>Certified Specialists</h4>
+                        <p class="reveal-desc">Our team includes top-tier experts with decades of global experience in their respective fields.</p>
+                    </div>
+                </div>
+                <div class="reveal-card interactive fade-up stagger-2">
+                    <div class="reveal-num">02</div>
+                    <div class="reveal-content">
+                        <h4>Modern Equipment</h4>
+                        <p class="reveal-desc">We utilize the latest AI-driven diagnostic tools and state-of-the-art imaging technology.</p>
+                    </div>
+                </div>
+                <div class="reveal-card interactive fade-up stagger-3">
+                    <div class="reveal-num">03</div>
+                    <div class="reveal-content">
+                        <h4>Accurate Diagnosis</h4>
+                        <p class="reveal-desc">Dual-verified pathology reports ensure 99.9% accuracy for your peace of mind.</p>
+                    </div>
+                </div>
+                <div class="reveal-card interactive fade-up stagger-4">
+                    <div class="reveal-num">04</div>
+                    <div class="reveal-content">
+                        <h4>Online Reports</h4>
+                        <p class="reveal-desc">Access your secure digital health records instantly through our patient portal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky Journey Timeline -->
+    <section class="section sticky-journey-section bg-alt" id="how-it-works">
+        <div class="container sticky-container">
+            <div class="sticky-left">
+                <span class="eyebrow">The Process</span>
+                <h2 class="section-title">Your Journey</h2>
+                <p>A seamless, transparent experience from booking to recovery.</p>
+            </div>
+            <div class="sticky-right">
+                <div class="huge-step">
+                    <span class="huge-num">01</span>
+                    <h3>Book Appointment</h3>
+                    <p>Use our smart concierge form to lock in your preferred time slot instantly.</p>
+                </div>
+                <div class="huge-step">
+                    <span class="huge-num">02</span>
+                    <h3>Visit Clinic</h3>
+                    <p>Experience our premium waiting lounge and fast-track registration.</p>
+                </div>
+                <div class="huge-step">
+                    <span class="huge-num">03</span>
+                    <h3>Consult Doctor</h3>
+                    <p>Meet with top specialists for an unhurried, comprehensive evaluation.</p>
+                </div>
+                <div class="huge-step">
+                    <span class="huge-num">04</span>
+                    <h3>Receive Treatment</h3>
+                    <p>Get an actionable care plan and instant access to digital health records.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Section Magazine Layout -->
+    <section class="section" id="doctors">
+        <div class="container">
+            <h2 class="section-title text-center fade-up">Meet Our Experts</h2>
+            <div class="mag-doctors-grid">
+                <div class="mag-doctor-card interactive fade-up stagger-1">
+                    <img src="assets/doctor.png" alt="Dr. Sarah Jenkins" class="mag-doc-img">
+                    <div class="mag-doc-overlay">
+                        <div class="mag-doc-content">
+                            <h4>Dr. Sarah Jenkins</h4>
+                            <p class="mag-doc-spec">Chief Pathologist &bull; 15+ Yrs</p>
+                            <a href="#booking" class="btn btn-outline slide-up-btn">Book Consultation</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mag-doctor-card interactive fade-up stagger-2">
+                    <img src="assets/doctor.png" alt="Dr. Michael Chen" class="mag-doc-img">
+                    <div class="mag-doc-overlay">
+                        <div class="mag-doc-content">
+                            <h4>Dr. Michael Chen</h4>
+                            <p class="mag-doc-spec">Head of Cardiology &bull; 12+ Yrs</p>
+                            <a href="#booking" class="btn btn-outline slide-up-btn">Book Consultation</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mag-doctor-card interactive fade-up stagger-3">
+                    <img src="assets/doctor.png" alt="Dr. Emily Thorne" class="mag-doc-img">
+                    <div class="mag-doc-overlay">
+                        <div class="mag-doc-content">
+                            <h4>Dr. Emily Thorne</h4>
+                            <p class="mag-doc-spec">Pediatric Specialist &bull; 10+ Yrs</p>
+                            <a href="#booking" class="btn btn-outline slide-up-btn">Book Consultation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Packages -->
+    <section class="section bg-alt" id="packages">
+        <div class="container">
+            <h2 class="section-title text-center fade-up">Health Packages</h2>
+            <div class="packages-grid" id="packagesGrid">
+                <!-- Dynamically populated from backend -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Testimonials -->
+    <section class="section bg-alt testimonials-section">
+        <div class="container">
+            <h2 class="section-title text-center fade-up">Patient Testimonials</h2>
+            <div class="testimonial-carousel fade-up">
+                <div class="carousel-track">
+                    <div class="testimonial-slide">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"Exceptional care and beautiful facility. The staff was incredibly welcoming and the diagnostics were fast."</p>
+                        <div class="patient-info">
+                            <img src="assets/patient_1.png" alt="Patient" class="patient-img">
+                            <span class="patient-name">Emily R.</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"Booking an appointment was seamless. Dr. Jenkins took the time to explain everything thoroughly."</p>
+                        <div class="patient-info">
+                            <img src="assets/patient_2.png" alt="Patient" class="patient-img">
+                            <span class="patient-name">James T.</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Controls -->
+                <div class="carousel-dots">
+                    <button class="dot active"></button>
+                    <button class="dot"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clinic Gallery Masonry -->
+    <section class="section gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title text-center fade-up">Clinic Gallery</h2>
+            <div class="masonry-grid fade-up">
+                <div class="masonry-item interactive">
+                    <img src="assets/gallery_1.png" alt="Clinic Interior">
+                </div>
+                <div class="masonry-item interactive">
+                    <img src="assets/gallery_2.png" alt="Equipment">
+                </div>
+                <div class="masonry-item interactive">
+                    <img src="assets/gallery_3.png" alt="Consultation Room">
+                </div>
+                <div class="masonry-item interactive">
+                    <img src="assets/gallery_4.png" alt="Laboratory">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq-section">
+        <div class="container">
+            <h2 class="section-title text-center fade-up">Frequently Asked Questions</h2>
+            <div class="faq-accordion fade-up">
+                <details class="faq-item interactive">
+                    <summary>How do I book an appointment?</summary>
+                    <div class="faq-content">You can use our Smart Booking form above, or call our reception directly.</div>
+                </details>
+                <details class="faq-item interactive">
+                    <summary>Do you offer home sample collection?</summary>
+                    <div class="faq-content">Yes, home collection is available for all pathology tests. Select the option during booking.</div>
+                </details>
+                <details class="faq-item interactive">
+                    <summary>What insurance do you accept?</summary>
+                    <div class="faq-content">We accept most major health insurance providers. Please contact us to verify your specific plan.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Premium Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-giant-text fade-up">
+            <div class="scrolling-text">
+                <h2>HEALTHCHECK &nbsp; HEALTHCHECK &nbsp; HEALTHCHECK &nbsp; HEALTHCHECK &nbsp; HEALTHCHECK &nbsp; HEALTHCHECK &nbsp; HEALTHCHECK &nbsp; HEALTHCHECK</h2>
+            </div>
+        </div>
+        <div class="container footer-glass-panel">
+            <div class="footer-grid">
+                <div class="footer-brand fade-up">
+                    <div class="logo">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                        <span>ClearHealth</span>
+                    </div>
+                    <p class="footer-desc mt-4">Elevating healthcare with precision diagnostics and expert compassion. Your health is our ultimate priority.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#" class="interactive">Fb</a>
+                        <a href="#" class="interactive">Ig</a>
+                        <a href="#" class="interactive">In</a>
+                    </div>
+                </div>
+                
+                <div class="footer-links fade-up stagger-1">
+                    <h3>Explore</h3>
+                    <a href="#services" class="interactive">Our Services</a>
+                    <a href="#how-it-works" class="interactive">Patient Journey</a>
+                    <a href="#doctors" class="interactive">Meet the Experts</a>
+                    <a href="#packages" class="interactive">Health Packages</a>
+                </div>
+                
+                <div class="footer-contact fade-up stagger-2">
+                    <h3>Contact Us</h3>
+                    <p>123 Wellness Avenue<br>Medical District, NY 10001</p>
+                    <p class="mt-4"><strong>Emergency:</strong> 911</p>
+                    <p><strong>Phone:</strong> +1 (800) 123-4567</p>
+                    <p><strong>Email:</strong> care@clearhealth.com</p>
+                </div>
+                
+                <div class="footer-newsletter fade-up stagger-3">
+                    <h3>Newsletter</h3>
+                    <p class="footer-desc">Subscribe for the latest health tips and clinic updates.</p>
+                    <form class="newsletter-form mt-4">
+                        <div class="input-float">
+                            <input type="email" placeholder=" " required>
+                            <label>Email Address</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary interactive full-width mt-4">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom fade-up">
+                <p>&copy; 2026 ClearHealth Clinic. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#" class="interactive">Privacy Policy</a>
+                    <a href="#" class="interactive">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="waves.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+
+    <!-- Floating Contact Buttons -->
+    <div class="floating-contact">
+        <a href="tel:+916398363290" class="floating-btn call-btn" aria-label="Call Us">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        </a>
+        <a href="https://wa.me/916398363290" target="_blank" class="floating-btn wa-btn" aria-label="WhatsApp Us">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+    </div>
+</body>
+</html>

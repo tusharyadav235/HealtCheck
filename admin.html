@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - ClearHealth Clinic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: #f8fafc; color: #0f172a; padding: 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+        .header h1 { font-size: 2rem; }
+        .logout-btn { padding: 0.5rem 1rem; background: #ef4444; color: white; border: none; border-radius: 8px; cursor: pointer; }
+        
+        .login-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+        .login-box { background: white; padding: 2rem; border-radius: 12px; width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .login-box h2 { margin-bottom: 1.5rem; text-align: center; }
+        .login-box input { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #cbd5e1; border-radius: 6px; }
+        .login-box button { width: 100%; padding: 0.75rem; background: #2563eb; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; }
+        .error-msg { color: #ef4444; font-size: 0.85rem; margin-bottom: 1rem; text-align: center; display: none; }
+
+        .tabs { display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 1px solid #e2e8f0; }
+        .tab { padding: 0.75rem 1.5rem; cursor: pointer; font-weight: 500; color: #64748b; border-bottom: 2px solid transparent; }
+        .tab.active { color: #2563eb; border-bottom-color: #2563eb; }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        .card { background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; }
+        .card h3 { margin-bottom: 1.5rem; font-size: 1.25rem; }
+        
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 1rem; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        th { background: #f1f5f9; font-weight: 600; }
+        .btn-delete { color: #ef4444; cursor: pointer; font-weight: 500; border: none; background: none; }
+        
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 6px; }
+        .btn-submit { padding: 0.75rem 1.5rem; background: #0d9488; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; }
+        
+        .grid-preview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .preview-item { position: relative; border-radius: 8px; overflow: hidden; background: #f1f5f9; }
+        .preview-item img { width: 100%; height: 150px; object-fit: cover; display: block; }
+        .preview-info { padding: 0.75rem; }
+        .preview-info h4 { font-size: 0.9rem; margin-bottom: 0.25rem; }
+        .preview-info p { font-size: 0.8rem; color: #64748b; }
+        .preview-delete { position: absolute; top: 0.5rem; right: 0.5rem; background: rgba(239, 68, 68, 0.9); color: white; border: none; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    </style>
+</head>
+<body>
+
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-box">
+            <h2>Admin Login</h2>
+            <p class="error-msg" id="loginError">Invalid credentials. Try again.</p>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button id="loginBtn">Login</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Admin Dashboard</h1>
+            <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" data-target="bookings">Bookings</div>
+            <div class="tab" data-target="doctors">Doctors</div>
+            <div class="tab" data-target="gallery">Gallery</div>
+            <div class="tab" data-target="testimonials">Testimonials</div>
+            <div class="tab" data-target="packages">Health Packages</div>
+        </div>
+
+        <!-- Bookings Tab -->
+        <div class="tab-content active" id="bookings">
+            <div class="card">
+                <h3>Appointment Bookings</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Patient Name</th>
+                            <th>Department</th>
+                            <th>Doctor</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingsTableBody">
+                        <!-- Dynamic content -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Doctors Tab -->
+        <div class="tab-content" id="doctors">
+            <div class="card">
+                <h3>Add New Doctor</h3>
+                <form id="doctorForm">
+                    <div class="form-group">
+                        <label>Doctor Name</label>
+                        <input type="text" id="docName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Specialization</label>
+                        <input type="text" id="docSpec" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Years of Experience (e.g. 15+ Yrs)</label>
+                        <input type="text" id="docExp" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Profile Image</label>
+                        <input type="file" id="docImage" accept="image/*" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Add Doctor</button>
+                </form>
+            </div>
+            <div class="card">
+                <h3>Current Doctors</h3>
+                <div class="grid-preview" id="doctorsPreview">
+                    <!-- Dynamic content -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Tab -->
+        <div class="tab-content" id="gallery">
+            <div class="card">
+                <h3>Add Gallery Image</h3>
+                <form id="galleryForm">
+                    <div class="form-group">
+                        <label>Description / Alt Text</label>
+                        <input type="text" id="galAlt" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Image File</label>
+                        <input type="file" id="galImage" accept="image/*" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Add Image</button>
+                </form>
+            </div>
+            <div class="card">
+                <h3>Current Gallery Images</h3>
+                <div class="grid-preview" id="galleryPreview">
+                    <!-- Dynamic content -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials Tab -->
+        <div class="tab-content" id="testimonials">
+            <div class="card">
+                <h3>Add Testimonial</h3>
+                <form id="testimonialForm">
+                    <div class="form-group">
+                        <label>Patient Name</label>
+                        <input type="text" id="testName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Quote</label>
+                        <textarea id="testQuote" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Star Rating (1-5)</label>
+                        <input type="number" id="testStars" min="1" max="5" value="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Patient Image (Optional)</label>
+                        <input type="file" id="testImage" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn-submit">Add Testimonial</button>
+                </form>
+            </div>
+            <div class="card">
+                <h3>Current Testimonials</h3>
+                <div class="grid-preview" id="testimonialsPreview">
+                    <!-- Dynamic content -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Health Packages Tab -->
+        <div class="tab-content" id="packages">
+            <div class="card">
+                <h3>Add Health Package</h3>
+                <form id="packageForm">
+                    <div class="form-group">
+                        <label>Package Title (e.g. Basic Checkup)</label>
+                        <input type="text" id="pkgTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Price (e.g. ₹999 or 999)</label>
+                        <input type="text" id="pkgPrice" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Features (comma separated, e.g. 25 Tests, Consultation, Reports)</label>
+                        <textarea id="pkgFeatures" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label style="display:flex; align-items:center; gap:0.5rem;">
+                            <input type="checkbox" id="pkgPremium" style="width:auto; margin:0;"> Enable Premium Glow Style
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-submit">Add Package</button>
+                </form>
+            </div>
+            <div class="card">
+                <h3>Current Health Packages</h3>
+                <div class="grid-preview" id="packagesPreview">
+                    <!-- Dynamic content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
