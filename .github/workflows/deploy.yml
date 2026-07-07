@@ -56,7 +56,7 @@ jobs:
             cd diagnose-app
             
             # Pull the latest images from Docker Hub
-            docker-compose pull
+            docker compose pull
             
             # Restart the containers with the new images
-            docker-compose up -d
+            docker compose up -d
